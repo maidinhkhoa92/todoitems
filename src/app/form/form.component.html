@@ -1,0 +1,20 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Title</label>
+    <input name="title" ngModel required #title="ngModel" type="text" class="form-control" placeholder="Title"/>
+    <app-error [errors]="title.errors" [name]="'title'" [touched]="title.touched"></app-error>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Description</label>
+    <textarea name="description" ngModel required #description="ngModel" class="form-control" rows="8" cols="80" ></textarea>
+    <app-error [errors]="description.errors" [name]="'description'" [touched]="description.touched"></app-error>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Time</label>
+    <input name="time" ngModel required #time="ngModel" type="text" class="form-control" placeholder="Enter email" />
+    <app-error [errors]="time.errors" [name]="'time'" [touched]="time.touched"></app-error>
+  </div>
+  <button [hidden]="!editAble" type="submit" class="btn btn-primary" [disabled]="form.invalid">Update</button>
+  <button [hidden]="editAble" type="submit" class="btn btn-primary" [disabled]="form.invalid">Create</button>
+  {{editAble}}
+</form>
